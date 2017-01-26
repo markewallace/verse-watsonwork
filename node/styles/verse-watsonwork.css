@@ -1,0 +1,103 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+  overflow: hidden;
+}
+body {
+  display: block;
+  margin: 8px;
+  font-family: Helvetica Neue for IBM,Helvetica Neue,Helvetica,Arial,Roboto;
+  line-height: 1.5;
+}
+.ic-general-annotation .ic-annotation-content .ic-annotation-actor .ic-annotation-title {
+  font-weight: 500;
+  padding-left: 6px;
+}
+.ic-general-annotation .ic-annotation-content .ic-annotation-actor {
+  font-size: .875rem;
+  font-weight: 300;
+  color: #586262;
+}
+.ic-general-annotation .ic-annotation-content .ic-message-text {
+  font-weight: 300;
+  font-size: 16px;
+  color: #1d3649;
+  line-height: 24px;
+}
+.ic-general-annotation .ic-annotation-content .ic-annotation-actor {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: visible;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.ic-message-status {
+  display: none;
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 64px);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%,-50%);
+  height: 96px;
+  width: 150px;
+  font-weight: 300;
+  font-size: 16px;
+  color: #1d3649;
+  line-height: 24px;
+}
+.space-find input {
+  font-weight: 300;
+  font-size: .875rem;
+  width: 50%;
+  padding: 0 2px;
+  margin: 4px 0;
+  border: 1;
+  color: #5a5a5a;
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.space-find button {
+  font-weight: 300;
+  font-size: .875rem;
+  color: #ffffff;
+  background-color: #4178be;
+  border: none;
+}
+.space-find button[disabled] {
+  background-color: #e0e0e0;
+}
+.space-find {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: visible;
+  padding-bottom: 6px;
+}
+.space-create button {
+  font-weight: 300;
+  font-size: .875rem;
+  color: #ffffff;
+  background-color: #4178be;
+  border: none;
+}
+.space-create button[disabled] {
+  background-color: #e0e0e0;
+}
+.space-create {
+  margin-bottom: 0px;
+  border-bottom: 1px solid #e0e0e0;
+  overflow: visible;
+  padding-bottom: 6px;
+}
+.grant-access button {
+  font-weight: 300;
+  font-size: .875rem;
+  color: #ffffff;
+  background-color: #4178be;
+  border: none;
+}
+grant-access button[disabled] {
+  background-color: #e0e0e0;
+}

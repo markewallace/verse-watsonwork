@@ -1,0 +1,24 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/styles/verse-watsonwork.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/jquery-ui.css" />
+    <script type="text/javascript" src="/javascript/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="/javascript/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascript/workspace.js"></script>
+    <script>
+      window.addEventListener("message", function(event) {
+        //if (event.origin !== "<%= verseHost %>"){
+        //  return;
+        //}
+        if (event.data.verseApiType === "com.ibm.verse.ping.application.loaded") {
+          var loaded_message = {
+            verseApiType : "com.ibm.verse.application.loaded"
+          };
+          event.source.postMessage(loaded_message, event.origin);
+        }
+      }, false);
+    </script>
+  </head>
+  <body>

@@ -1,0 +1,17 @@
+{
+  "name": "IBM Verse and Watson Workspace",
+  "description": "Node",
+  "keywords": [
+    "ibm verse",
+    "watson workspace",
+    "node"
+  ],
+  "website": "https://github.com/markewallace/verse-watsonwork",
+  "repository": "https://github.com/markewallace/verse-watsonwork",
+  "success_url": "/",
+  "env": {
+    "APPLICATION_ID":  { "description": "Application ID" },
+    "APPLICATION_SECRET":  { "description": "Application Secret" },
+    "VERSE_HOST":  { "description": "Host name of the Verse server for cross-site-scripting checks" }
+  }
+}

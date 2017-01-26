@@ -1,7 +1,7 @@
 (function() {
 
-  var appId = '5cd2bbc2-71d1-4b3e-9694-8cffd2bbfa8c';
-  var appSecret = 'o0j9iyq3e32r16ogb8ngutklh1bdbrbi';
+  var appId = 'f7677c86-cf75-4947-805e-c8b2e05e4d93';
+  var appSecret = '2guupyy0v196khsre9w4ov6ramcwhavt';
   
   var graphqlUrl = 'https://workspace.ibm.com/graphql';
   var tokenUrl = 'https://api.watsonwork.ibm.com/oauth/token';

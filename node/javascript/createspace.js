@@ -54,12 +54,12 @@
               handleAccessCode(event.data.access_code);
             } else {
               $("#grant").show();
-              window.workspace.authorize(redirectUri);
+              window.workspace.authorize();
             }
           })
         } else {
           $("#grant").show();
-          window.workspace.authorize(redirectUri);
+          window.workspace.authorize();
         }
       }
       if (event.data.access_code) {

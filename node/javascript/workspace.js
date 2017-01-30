@@ -100,7 +100,7 @@
       if (!access_token) {
         var self = this;
         var redirectUri = window.location.origin + window.location.pathname;
-        this.getToken(code, redirectUri, function() {
+        this.getToken(this.code, redirectUri, function() {
           self.createSpace(title, userIds, callback);
         });
         return;

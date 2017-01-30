@@ -36,8 +36,12 @@
           }
           
           access_token = xhr.response.access_token;
-          callback(access_token);
+        } else {
+          refresh_token = null;
+          access_token = null;
+          localStorage.removeItem('v_ww_r_t');
         }
+        callback(access_token);
       }
       var params = 'grant_type=client_credentials';
       if (code) {
@@ -50,7 +54,8 @@
       xhr.send(params);
     },
     
-    authorize: function(redirectUri) {
+    authorize: function() {
+      var redirectUri = window.location.origin + window.location.pathname;
       var state = 'Uv4Ypd9q2hXe5FPk2RCMaQ=='; // TODO generate this
       var query = '?client_id=' + appId + '&response_type=code&redirect_uri=' + encodeURIComponent(redirectUri) + '&state=' + encodeURIComponent(state);
       var href = authorizeUrl + query;

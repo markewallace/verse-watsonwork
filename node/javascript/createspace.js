@@ -48,14 +48,21 @@
         $("#access").hide();
         
         var refresh_token = localStorage.getItem('v_ww_r_t');
-        if (!refresh_token) {
+        if (refresh_token) {
+          window.workspace.getToken(function(access_code) {
+            if (access_code) {
+              handleAccessCode(event.data.access_code);
+            } else {
+              $("#grant").show();
+              window.workspace.authorize(redirectUri);
+            }
+          })
+        } else {
           $("#grant").show();
-          var redirectUri = window.location.origin + window.location.pathname;
           window.workspace.authorize(redirectUri);
         }
       }
       if (event.data.access_code) {
-        $("#create-workspace").show();
         handleAccessCode(event.data.access_code);
       }
     }

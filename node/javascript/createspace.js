@@ -1,10 +1,10 @@
 (function() {
 
-  var userIds = [ 'internal-e1970f87-3114-498e-9300-cb311b7871be', 
+  var userIds = [ 'internal-e1970f87-3114-498e-9300-cb311b7871be' ]; /*, 
                   '91ae7240-8f0a-1028-83e9-db07163b51b2', 
                   '720b5624-b7dc-4ee1-aefe-bdc50611a2a8', 
                   '8a90987e-1cc7-484f-a749-4af0ad82a21c', 
-                  'e35fe540-8468-1031-8ab5-cdbbe14045ca' ];
+                  'e35fe540-8468-1031-8ab5-cdbbe14045ca' ];*/
   var actorName = 'Chris Crummey';
   var actorUrl = 'https://avatars1.githubusercontent.com/u/22985179';
   var actorAvatar = 'https://github.com/watsonwork-helloworld';
@@ -45,18 +45,14 @@
         console.log('Emails: %O', emails);
         
         $("#create-workspace").hide();
-        
-        /* Try automatically triggering the grant access request
-        $('#grant-access').prop('disabled', false);
-        $('#grant-access').on('click', function() {
-          var redirectUri = window.location.origin + window.location.pathname;
-          window.workspace.authorize(redirectUri);
-        });
-        */
         $("#access").hide();
         $("#grant").show();
-        var redirectUri = window.location.origin + window.location.pathname;
-        window.workspace.authorize(redirectUri);
+        
+        var refresh_token = localStorage.getItem('v_ww_r_t');
+        if (!refresh_token) {
+          var redirectUri = window.location.origin + window.location.pathname;
+          window.workspace.authorize(redirectUri);
+        }
       }
       if (event.data.access_code) {
         handleAccessCode(event.data.access_code);
@@ -81,8 +77,7 @@
     
     $('#create-space').on('click', function() {
       var val = $('#space-to-create').val();
-      var redirectUri = window.location.origin + window.location.pathname;
-      window.workspace.createSpace(val, userIds, code, redirectUri, function(response) {
+      window.workspace.createSpace(val, userIds, function(response) {
       if (response.data && response.data.createSpace && response.data.createSpace.space) {
         var spaceId = response.data.createSpace.space.id;
         window.workspace.postToSpace(spaceId, subject, bodyText, actorName, actorAvatar, actorUrl, handlePostedToSpace);

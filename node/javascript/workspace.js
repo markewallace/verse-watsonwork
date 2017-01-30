@@ -8,7 +8,6 @@
   var authorizeUrl = 'https://workspace.ibm.com/oauth/authorize';
 
   var access_token;
-  var refresh_token;
   var code;
 
   if (window.workspace) {
@@ -20,6 +19,8 @@
       var code = arguments.length > 2 ? arguments[0] : null;
       var redirectUri = arguments.length > 2 ? arguments[1] : null;
       var callback = arguments.length > 2 ? arguments[2] : arguments[0];
+      var refresh_token = localStorage.getItem('v_ww_r_t');
+      
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'json';
       xhr.open('POST', tokenUrl);
@@ -41,6 +42,9 @@
       var params = 'grant_type=client_credentials';
       if (code) {
         params = 'grant_type=authorization_code&code=' + code + '&redirect_uri=' + encodeURIComponent(redirectUri);
+      }
+      if (refresh_token) {
+        params = 'grant_type=refresh_token&refresh_token=' + refresh_token;
       }
       console.log(params);
       xhr.send(params);
@@ -86,11 +90,12 @@
       }));
     },
     
-    createSpace: function(title, userIds, code, redirectUri, callback) {
+    createSpace: function(title, userIds, callback) {
       if (!access_token) {
         var self = this;
+        var redirectUri = window.location.origin + window.location.pathname;
         this.getToken(code, redirectUri, function() {
-          self.createSpace(title, userIds, code, redirectUri, callback);
+          self.createSpace(title, userIds, callback);
         });
         return;
       }

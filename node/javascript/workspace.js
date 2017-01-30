@@ -31,6 +31,7 @@
         console.log('Get token response: %O', xhr.response);
         if (xhr.status == 200) {
           refresh_token = xhr.response.refresh_token || null;
+          console.log("Refresh token: %O", refresh_token);
           if (refresh_token) {
             localStorage.setItem('v_ww_r_t', refresh_token);
           }

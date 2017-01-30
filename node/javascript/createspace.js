@@ -49,9 +49,9 @@
         
         var refresh_token = localStorage.getItem('v_ww_r_t');
         if (refresh_token) {
-          window.workspace.getToken(function(access_code) {
-            if (access_code) {
-              handleAccessCode(event.data.access_code);
+          window.workspace.getToken(function(access_token) {
+            if (access_token) {
+              handleAccessCode(null);
             } else {
               $("#grant").show();
               window.workspace.authorize();
@@ -63,6 +63,7 @@
         }
       }
       if (event.data.access_code) {
+        console.log("Access code: %O", event.data.access_code);
         handleAccessCode(event.data.access_code);
       }
     }

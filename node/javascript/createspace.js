@@ -46,15 +46,16 @@
         
         $("#create-workspace").hide();
         $("#access").hide();
-        $("#grant").show();
         
         var refresh_token = localStorage.getItem('v_ww_r_t');
         if (!refresh_token) {
+          $("#grant").show();
           var redirectUri = window.location.origin + window.location.pathname;
           window.workspace.authorize(redirectUri);
         }
       }
       if (event.data.access_code) {
+        $("#create-workspace").show();
         handleAccessCode(event.data.access_code);
       }
     }
